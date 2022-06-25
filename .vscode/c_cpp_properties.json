@@ -1,0 +1,32 @@
+{
+    "configurations": [
+        {
+            "defines": [
+                "MOD_ID=\"DataSender\"",
+                "VERSION=\"1.0.0\"",
+                "__GNUC__",
+                "__aarch64__",
+                "ID=\"DataSender\"",
+                "USE_CODEGEN_FIELDS"
+            ],
+            "includePath": [
+                "${workspaceFolder}/",
+                "${workspaceFolder}/shared",
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/extern/includes",
+                "${workspaceFolder}/extern/includes/codegen/include",
+                "${workspaceFolder}/extern/includes/libil2cpp/il2cpp/libil2cpp",
+                "${default}",
+                "D:/BeatSaberCustom/android-ndk-r23b/",
+                "D:/BeatSaberCustom/android-ndk-r23b/toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/",
+                "D:/BeatSaberCustom/android-ndk-r23b/sources/cxx-stl/llvm-libc++/include/",
+                "D:/BeatSaberCustom/android-ndk-r23b/sources/cxx-stl/llvm-libc++abi/include/"
+            ],
+            "name": "Quest",
+            "cStandard": "c11",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "linux-clang-arm64"
+        }
+    ],
+    "version": 4
+}

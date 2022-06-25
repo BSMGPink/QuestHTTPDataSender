@@ -1,0 +1,74 @@
+{
+  "sharedDir": "shared",
+  "dependenciesDir": "extern",
+  "info": {
+    "name": "DataSender",
+    "id": "datasender",
+    "version": "1.0.0",
+    "url": "https://github.com/BSMGPink/DataSender",
+    "additionalData": {
+      "overrideSoName": "libdatasender.so"
+    }
+  },
+  "dependencies": [
+    {
+      "id": "beatsaber-hook",
+      "versionRange": "^3.6.8",
+      "additionalData": {
+        "extraFiles": [
+          "src/inline-hook"
+        ]
+      }
+    },
+    {
+      "id": "custom-types",
+      "versionRange": "^0.15.8",
+      "additionalData": {
+        "private": true
+      }
+    },
+    {
+      "id": "codegen",
+      "versionRange": "^0.21.0",
+      "additionalData": {
+        "private": true
+      }
+    },
+    {
+      "id": "libcurl",
+      "versionRange": "*",
+      "additionalData": {
+        "private": true
+      }
+    },
+    {
+      "id": "libil2cpp",
+      "versionRange": "^0.2.3",
+      "additionalData": {
+        "private": true
+      }
+    },
+    {
+      "id": "modloader",
+      "versionRange": "^1.2.3",
+      "additionalData": {
+        "private": true
+      }
+    },
+    {
+      "id": "questui",
+      "versionRange": "^0.13.3",
+      "additionalData": {
+        "private": true
+      }
+    },
+    {
+      "id": "songloader",
+      "versionRange": "^0.9.1",
+      "additionalData": {
+        "private": true
+      }
+    }
+  ],
+  "additionalData": {}
+}
