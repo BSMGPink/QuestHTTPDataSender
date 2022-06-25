@@ -116,21 +116,21 @@ MAKE_AUTO_HOOK_MATCH(MainMenuViewController_HandleMenuButton, &GlobalNamespace::
 //this method gets called as soon as a button within the main menu is pressed.
     if(menuButton == GlobalNamespace::MainMenuViewController::MenuButton::BeatmapEditor){
         if(usernameModal == nullptr){
-
-            usernameModal = QuestUI::BeatSaberUI::CreateModal(self->soloButton->get_transform()->get_parent(), UnityEngine::Vector2(110, 60), UnityEngine::Vector2(0, 0), [](HMUI::ModalView *modal){ }, false);
+            //if the menu doesnt exist yet
+            usernameModal = QuestUI::BeatSaberUI::CreateModal(self->soloButton->get_transform()->get_parent(), UnityEngine::Vector2(110, 60), UnityEngine::Vector2(0, 0), [](HMUI::ModalView *modal){ }, false); //create it
             auto* horizontalLayoutGroup = QuestUI::BeatSaberUI::CreateHorizontalLayoutGroup(usernameModal);
-            auto* verticalLayoutGroup = QuestUI::BeatSaberUI::CreateVerticalLayoutGroup(horizontalLayoutGroup);
+            auto* verticalLayoutGroup = QuestUI::BeatSaberUI::CreateVerticalLayoutGroup(horizontalLayoutGroup);//create a vertical and horizontal layout group, which allows for positioning of elements
             verticalLayoutGroup->set_spacing(5);
 
             horizontalLayoutGroup->set_spacing(40);
-            infoText = QuestUI::BeatSaberUI::CreateText(verticalLayoutGroup->get_transform(), "Enter Your GamerTag");
+            infoText = QuestUI::BeatSaberUI::CreateText(verticalLayoutGroup->get_transform(), "Enter Your GamerTag"); //create the info text
             infoText->set_alignment(TMPro::TextAlignmentOptions::Center);
             infoText->set_fontSize(9);
-            infoText->set_fontStyle(TMPro::FontStyles::Italic);
+            infoText->set_fontStyle(TMPro::FontStyles::Italic); //sets the text to italics, normal will have graphical issues upon opening the first time as it will be italic and then pop to normal.
             gamerTagTextBox = QuestUI::BeatSaberUI::CreateStringSetting(verticalLayoutGroup->get_transform(), "GamerTag", config.gamerTag, {0,0}, {0,0,0}, [](std::string value) {
                 usernameToSet = value;
             });
-            usernameToSet = config.gamerTag;
+            usernameToSet = config.gamerTag; //make the initial username the already saved username
 
             auto* horizontalButtonLayoutGroup = QuestUI::BeatSaberUI::CreateHorizontalLayoutGroup(verticalLayoutGroup->get_transform());
 
@@ -138,7 +138,7 @@ MAKE_AUTO_HOOK_MATCH(MainMenuViewController_HandleMenuButton, &GlobalNamespace::
             horizontalButtonLayoutGroup->set_padding(UnityEngine::RectOffset::New_ctor(15, 15, 0, 0));
             closeGamerTagButton = QuestUI::BeatSaberUI::CreateUIButton(horizontalButtonLayoutGroup->get_transform(), "Close", []{ 
                 usernameModal->Hide(true, nullptr);
-            });
+            }); //create close button
             
             setGamerTagButton = QuestUI::BeatSaberUI::CreateUIButton(horizontalButtonLayoutGroup->get_transform(), "Set", []{ 
                 
@@ -154,11 +154,11 @@ MAKE_AUTO_HOOK_MATCH(MainMenuViewController_HandleMenuButton, &GlobalNamespace::
                     usernameModal->Hide(true, nullptr);
                     infoText->SetText("Enter Your GamerTag");
                 }
-            });
+            }); //create set button
         }
 
         usernameModal->Show(true,true, MakeDelegate(System::Action*, (std::function<void()>)[](){ 
-            gamerTagTextBox->SetText(config.gamerTag); 
+            gamerTagTextBox->SetText(config.gamerTag);  //this fixes a visual issue where the text blurs upon opening
             infoText->SetText("<size=9>Enter Your GamerTag</size>");
 
         }));
@@ -166,31 +166,31 @@ MAKE_AUTO_HOOK_MATCH(MainMenuViewController_HandleMenuButton, &GlobalNamespace::
 
 
     }else if(menuButton == GlobalNamespace::MainMenuViewController::MenuButton::SoloFreePlay && config.gamerTag == ""){
-
+        //if the solo button is pressed
         menuButtonSelf = self;
-        if(warningModal == nullptr){
-            warningModal = QuestUI::BeatSaberUI::CreateModal(self->soloButton->get_transform()->get_parent(), UnityEngine::Vector2(90, 50), UnityEngine::Vector2(0, 0), nullptr);
+        if(warningModal == nullptr){ //if the warning menu hasnt been made yet
+            warningModal = QuestUI::BeatSaberUI::CreateModal(self->soloButton->get_transform()->get_parent(), UnityEngine::Vector2(90, 50), UnityEngine::Vector2(0, 0), nullptr); //create the warning menu
             auto* horizontalLayoutGroup = QuestUI::BeatSaberUI::CreateHorizontalLayoutGroup(warningModal);
             auto* verticalLayoutGroup = QuestUI::BeatSaberUI::CreateVerticalLayoutGroup(horizontalLayoutGroup);
             auto* infoText = QuestUI::BeatSaberUI::CreateText(verticalLayoutGroup->get_transform(), "<color=red><size=8>WARNING</size></color><br>No GamerTag Is Currently Set<br>Do You Want To Continue?");
             infoText->set_alignment(TMPro::TextAlignmentOptions::Center);
-            verticalLayoutGroup->set_spacing(5);
+            verticalLayoutGroup->set_spacing(5); //create warning text
             auto* horizontalButtonLayoutGroup = QuestUI::BeatSaberUI::CreateHorizontalLayoutGroup(verticalLayoutGroup->get_transform());
 
             horizontalButtonLayoutGroup->set_spacing(10.0);
             QuestUI::BeatSaberUI::CreateUIButton(horizontalButtonLayoutGroup->get_transform(), "Close", []{ 
-                warningModal->Hide(true, nullptr);
-            });
+                warningModal->Hide(true, nullptr); //close the menu
+            }); //create close button
             
             QuestUI::BeatSaberUI::CreateUIButton(horizontalButtonLayoutGroup->get_transform(), "Continue", []{ 
-                warningModal->Hide(true, nullptr);
-                MainMenuViewController_HandleMenuButton(menuButtonSelf, GlobalNamespace::MainMenuViewController::MenuButton::SoloFreePlay);
+                warningModal->Hide(true, nullptr); //close the menu
+                MainMenuViewController_HandleMenuButton(menuButtonSelf, GlobalNamespace::MainMenuViewController::MenuButton::SoloFreePlay); //open the menu
             });
         }
-        warningModal->Show(true,true,nullptr);
+        warningModal->Show(true,true,nullptr); //open the menu
         
     }else{
-	    MainMenuViewController_HandleMenuButton(self, menuButton);
+	    MainMenuViewController_HandleMenuButton(self, menuButton); //run the original method
     }
 
 

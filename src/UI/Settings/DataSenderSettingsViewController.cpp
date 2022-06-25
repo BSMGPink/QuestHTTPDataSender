@@ -22,12 +22,12 @@ namespace DataSender::UI
 			QuestUI::BeatSaberUI::CreateToggle(container->get_transform(), "Send Data", config.sendRequests, [](bool value){
 				config.sendRequests = value; 
 				SaveConfig(); 
-			});
+			}); //Send Data Setting Toggle
 
 			QuestUI::BeatSaberUI::CreateToggle(container->get_transform(), "Require GamerTag Check", config.gamerTagCheckRequirement, [](bool value){
 				config.gamerTagCheckRequirement = value; 
 				SaveConfig(); 
-			});
+			}); //GamerTag check requirement toggle
 		
             std::vector<StringW> dataSendTypeStringWVector = { 
                 "Don't Limit",
@@ -50,20 +50,21 @@ namespace DataSender::UI
 					}
                     SaveConfig();
                 }
-            );
+            ); //Limit drop down menu
             
             QuestUI::BeatSaberUI::CreateIncrementSetting(container->get_transform(), "Request Timeout Length", 1, 0.25f, config.requestTimeoutTime, 1.0f, 10.0f, 
                 [](float value) { 
                     config.requestTimeoutTime = value; 
                     SaveConfig(); 
                 } 
-            );
+                //Timeout increment setting
+            ); //1 is the decimal place (1.0), 0.25f is the step up/down on click, config.requestTimeoutTime is the current value, 1.0f is the min, 10.0f is the max. 
 			QuestUI::BeatSaberUI::CreateUIButton(container->get_transform(), "Reset Username", [](){
 				config.gamerTag = ""; 
 				if(gamerTagTextBox != nullptr)
 					gamerTagTextBox->SetText("");
 				SaveConfig(); 
-			});
+			});//reset button
 
 				
 		}

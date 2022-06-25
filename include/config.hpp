@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 
-
 typedef struct config_t {
 	int dataSendType = 0;
 	bool gamerTagCheckRequirement = true;

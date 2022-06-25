@@ -23,3 +23,4 @@ namespace DataSender
         return contextLoggers.find(contextString)->second;
     }
 }
+//taken from PinkCore

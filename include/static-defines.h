@@ -12,5 +12,3 @@ constexpr const char* useragent = "Meta Quest / Beat Saber / " ID " / " VERSION;
 
 
 #define DATAPATH "/sdcard/ModData/com.beatgames.beatsaber/Mods/DataSender/"
-
-//constexpr const char* donationURL = "";

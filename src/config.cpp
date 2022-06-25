@@ -63,3 +63,4 @@ bool LoadConfig()
 	INFO("Loaded Configuration!");
 	return true;
 }
+//taken from PinkCore

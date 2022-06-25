@@ -36,3 +36,4 @@ namespace DataSender::UI
 		parentFlowCoordinator->DismissFlowCoordinator(this, ViewController::AnimationDirection::Horizontal, nullptr, false);
 	}
 }
+//taken from PinkCore

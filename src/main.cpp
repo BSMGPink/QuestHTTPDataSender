@@ -5,7 +5,6 @@
 #include "questui/shared/QuestUI.hpp"
 
 #include "UI/Settings/DataSenderFlowCoordinator.hpp"
-//#include "CustomTypes/RequirementElement.hpp"
 
 #include "HMUI/CurvedTextMeshPro.hpp"
 #include "HMUI/ImageView.hpp"
@@ -45,3 +44,4 @@ extern "C" void load()
 
 	QuestUI::Register::RegisterModSettingsFlowCoordinator<DataSender::UI::DataSenderFlowCoordinator*>({"Data Sender", VERSION});
 }
+//taken from PinkCore
